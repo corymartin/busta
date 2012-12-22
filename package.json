@@ -1,0 +1,26 @@
+{
+  "name": "busta"
+, "version": "0.1.0"
+, "description": "Util to fingerprint asset filenames."
+, "readmeFilename": "README.md"
+, "license": "MIT",
+, "author": "Cory Martin"
+, "keywords": ["fingerprint", "bust", "assets", "cache"]
+, "main": "index.js"
+, "bin": {
+    "busta": "./bin/busta"
+  }
+, "repository": {
+    "type": "git",
+    "url": "git@github.com:corymartin/busta.git"
+  }
+, "dependencies": {
+    "commander": "1.1.1"
+  }
+, "devDependencies": {
+    "mocha": "*"
+  }
+, "engines": {
+    "node": ">= 0.8.x"
+  }
+}

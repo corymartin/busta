@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+
+var program = require('commander');
+var busta   = require('../lib/busta');
+var pkg     = require('../package');
+
+
+program
+  .version(pkg.version)
+  .usage('--file <file-to-bust> [options]')
+  .option('-f, --file <file>', 'file to bust - required')
+  .option('-o, --outdir <outdir>', 'directory to write new file to')
+  .option('-p, --prefix <prefix>', 'filename prefix - default is base name of file')
+  .option('-n, --noprefix', 'do not use a file prefix')
+  .option('-e, --encoding <encoding>', 'encoding used by hasher - defaults to utf8', 'utf8')
+  .parse(process.argv);
+
+
+if (!program.file) {
+  console.error('\nError: File is required.');
+  program.help();
+  process.exit(1);
+}
+
+
+busta(
+  program.file
+, {
+    outdir:   program.outdir
+  , prefix:   program.prefix
+  , noprefix: program.noprefix
+  , encoding: program.encoding
+  }
+, function(err, newfile) {
+    if (err) {
+      console.error('\nError:\n', err);
+      process.exit(1);
+    }
+    console.info(newfile.absolute);
+  }
+);
+

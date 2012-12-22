@@ -3,7 +3,7 @@
 , "version": "0.1.0"
 , "description": "Util to fingerprint asset filenames."
 , "readmeFilename": "README.md"
-, "license": "MIT",
+, "license": "MIT"
 , "author": "Cory Martin"
 , "keywords": ["fingerprint", "bust", "assets", "cache"]
 , "main": "index.js"

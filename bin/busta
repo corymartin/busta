@@ -9,11 +9,12 @@ var pkg     = require('../package');
 program
   .version(pkg.version)
   .usage('--file <file-to-bust> [options]')
-  .option('-f, --file <file>', 'file to bust - required')
-  .option('-o, --outdir <outdir>', 'directory to write new file to')
-  .option('-p, --prefix <prefix>', 'filename prefix - default is base name of file')
-  .option('-n, --noprefix', 'do not use a file prefix')
-  .option('-e, --encoding <encoding>', 'encoding used by hasher - defaults to utf8', 'utf8')
+  .option('-f, --file <file>',          'file to bust - required')
+  .option('-o, --outdir <outdir>',      'directory to write new file to')
+  .option('-p, --prefix <prefix>',      'filename prefix - default is base name of file')
+  .option('-n, --noprefix',             'do not use a file prefix')
+  .option('-e, --encoding <encoding>',  'encoding used by hasher - default is utf8', 'utf8')
+  .option('-H, --hash <hash-algoritm>', 'Hash algorithm - default is md5', 'md5')
   .parse(process.argv);
 
 
@@ -31,6 +32,7 @@ busta(
   , prefix:   program.prefix
   , noprefix: program.noprefix
   , encoding: program.encoding
+  , hash:     program.hash
   }
 , function(err, newfile) {
     if (err) {

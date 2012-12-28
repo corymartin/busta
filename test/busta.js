@@ -4,7 +4,7 @@ var fs     = require('fs');
 var path   = require('path');
 
 
-describe('busta', function() {
+describe('busta function', function() {
   var assets;
   var deploy;
   var script;
@@ -139,6 +139,27 @@ describe('busta', function() {
       busta(script, {prefix:'yabbadabba'}, function(err, fi) {
         assert.ok( fs.existsSync(fi.absolute) );
         assert.ok( (/^yabbadabba-[a-z0-9]{32}\.js$/i).test(fi.name) );
+        done();
+      });
+    });
+
+    it('should use the `hash` algorithm specified by that option', function(done) {
+      busta(script, {hash:'sha256'}, function(err, fi) {
+        assert.ok( /^[a-z0-9]{64}$/i.test(fi.fingerprint) );
+        assert.ok( /^script-[a-z0-9]{64}\.js$/i.test(fi.name) );
+        done();
+      });
+    });
+
+    it('should use the `hash` function specified by that option', function(done) {
+      var scriptContents = fs.readFileSync(script, 'utf8');
+      var hasher = function(str) {
+        assert.strictEqual(str, scriptContents);
+        return 'test_test_test'
+      };
+      busta(script, {hash:hasher}, function(err, fi) {
+        assert.strictEqual( 'test_test_test', fi.fingerprint );
+        assert.strictEqual( 'script-test_test_test.js', fi.name );
         done();
       });
     });

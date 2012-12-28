@@ -1,6 +1,6 @@
 {
   "name": "busta"
-, "version": "0.1.0"
+, "version": "0.1.1"
 , "description": "Util to fingerprint asset filenames."
 , "readmeFilename": "README.md"
 , "license": "MIT"
@@ -15,12 +15,15 @@
     "url": "git@github.com:corymartin/busta.git"
   }
 , "dependencies": {
-    "commander": "1.1.1"
+    "commander": "~1.1.1"
   }
 , "devDependencies": {
     "mocha": "*"
   }
 , "engines": {
     "node": ">= 0.8.x"
+  }
+, "scripts": {
+    "test": "mocha"
   }
 }

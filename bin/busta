@@ -14,7 +14,7 @@ program
   .option('-p, --prefix <prefix>',      'filename prefix - default is base name of file')
   .option('-n, --noprefix',             'do not use a file prefix')
   .option('-e, --encoding <encoding>',  'encoding used by hasher - default is utf8', 'utf8')
-  .option('-H, --hash <hash-algoritm>', 'Hash algorithm - default is md5', 'md5')
+  .option('-H, --hash <hash>',          'hash algorithm - default is md5', 'md5')
   .parse(process.argv);
 
 
